@@ -52,6 +52,7 @@ public class UserController {
             session.setAttribute("user",username);
             session.setAttribute("employeeName",emp.getName());
             session.setAttribute("password",emp.getPassword());
+            session.setAttribute("employeeId",emp.getId());
         }
         else{
             System.out.println("employee is null");
@@ -72,26 +73,28 @@ public class UserController {
 
     @GetMapping("/home")
     public String homeGet(HttpSession session){
-        String user = (String) session.getAttribute("user");
-        String pass = (String) session.getAttribute("password");
-        String userType = (String) session.getAttribute("userType");
-        if(user != null && pass != null && userType != null){
-            Employee emp = employeeService.CheckAuth(user,pass);
-            if(emp != null){
-                if(userType.equals("admin")){
-                    return "HomeAdmin";
-                }
-                else{
-                    return "HomeTrainee";
-                }
-            }
-            else{
-                return "redirect:/login";
-            }
-        }
-        else{
-            return "redirect:/login";
-        }
+        session.invalidate();
+        return "redirect:/login";
+//        String user = (String) session.getAttribute("user");
+//        String pass = (String) session.getAttribute("password");
+//        String userType = (String) session.getAttribute("userType");
+//        if(user != null && pass != null && userType != null){
+//            Employee emp = employeeService.CheckAuth(user,pass);
+//            if(emp != null){
+//                if(userType.equals("admin")){
+//                    return "HomeAdmin";
+//                }
+//                else{
+//                    return "HomeTrainee";
+//                }
+//            }
+//            else{
+//                return "redirect:/login";
+//            }
+//        }
+//        else{
+//            return "redirect:/login";
+//        }
     }
 
     @GetMapping("/changePasswordUser")

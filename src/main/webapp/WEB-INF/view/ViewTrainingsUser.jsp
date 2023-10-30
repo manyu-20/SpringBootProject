@@ -12,7 +12,6 @@
     <title>My trainings</title>
 </head>
 <body>
-<p><a href="/home"><button>Go back to Home</button></a></p>
 
 <h2>Previous Training</h2>
 <table>

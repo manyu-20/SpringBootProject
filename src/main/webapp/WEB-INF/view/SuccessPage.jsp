@@ -11,7 +11,6 @@
     <title>Success Page</title>
 </head>
 <body>
-<p><a href="/home"><button>Go back to Home</button></a></p>
 
 <h1>Success Page</h1>
 </body>

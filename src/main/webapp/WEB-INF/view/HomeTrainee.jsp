@@ -17,6 +17,6 @@
 <h1>Trainee Home</h1>
 <p><a href="/changePasswordUser"><button>Change Password</button></a></p>
 <p><a href="/changePhone"><button>Change Phone</button></a></p>
-<p><a href="/viewTrainings?empId=${empId}"><button>Show my courses</button></a></p>
+<p><a href="/viewTrainings?empId=${sessionScope.employeeId}"><button>Show my courses</button></a></p>
 
 </html>
