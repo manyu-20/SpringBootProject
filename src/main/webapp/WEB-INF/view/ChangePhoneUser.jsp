@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<h1>Input password</h1>
+<h1>Input Phone number</h1>
 <form method="post" action="/changePhone">
     <label for="phone">phone:</label>
     <input type="text" id="phone" name="phone" required th:field="*{phone}"><br><br>

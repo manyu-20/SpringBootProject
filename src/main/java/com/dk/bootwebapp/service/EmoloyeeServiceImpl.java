@@ -24,10 +24,14 @@ public class EmoloyeeServiceImpl implements EmployeeService {
 
     @Autowired
     EmployeeRepository employeeRepository;
+
+    @Autowired
+    PasswordService passwordService;
     @Override
     public Employee CheckAuth(String email, String password) {
         System.out.println(email + " " + password);
-        return employeeRepository.findByEmailAndPassword(email,password);
+        String hashedPassword = passwordService.hashPassword(password);
+        return employeeRepository.findByEmailAndPassword(email,hashedPassword);
     }
 
     public List<Employee> findAllTrainees(){
@@ -53,8 +57,9 @@ public class EmoloyeeServiceImpl implements EmployeeService {
     @Override
     public boolean updatePassword(String email,String password) {
         Employee emp = employeeRepository.findByEmail(email);
+        String hashPassword = passwordService.hashPassword(password);
         if(emp != null){
-            emp.setPassword(password);
+            emp.setPassword(hashPassword);
             employeeRepository.save(emp);
             return true;
         }

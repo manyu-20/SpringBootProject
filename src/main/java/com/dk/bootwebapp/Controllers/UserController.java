@@ -4,11 +4,13 @@ import com.dk.bootwebapp.model.Employee;
 import com.dk.bootwebapp.model.LoginForm;
 import com.dk.bootwebapp.model.Training;
 import com.dk.bootwebapp.service.EmployeeService;
+import com.dk.bootwebapp.service.PasswordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +21,9 @@ public class UserController {
 
     @Autowired
     EmployeeService employeeService;
+
+    @Autowired
+    PasswordService passwordService;
 
     @GetMapping("/")
     public String CheckSession(HttpSession session){
@@ -37,7 +42,7 @@ public class UserController {
     }
 
     @PostMapping ("/home")
-    public String home (ModelMap modelMap,HttpSession session, @ModelAttribute("loginForm")LoginForm loginForm){
+    public String home (ModelMap modelMap, HttpSession session, @ModelAttribute("loginForm")LoginForm loginForm){
         if(loginForm == null){
             System.out.println("login form is null");
             return "redirect:/login";
@@ -45,18 +50,24 @@ public class UserController {
         System.out.println(loginForm.toString());
         String username = loginForm.getUsername();
         String password = loginForm.getPassword();
+
         Employee emp = employeeService.CheckAuth(username,password);
         if(emp != null){
             System.out.println(emp.toString());
             session.setAttribute("userType",emp.getUserType());
             session.setAttribute("user",username);
             session.setAttribute("employeeName",emp.getName());
-            session.setAttribute("password",emp.getPassword());
+//            session.setAttribute("password",emp.getPassword());
             session.setAttribute("employeeId",emp.getId());
         }
         else{
             System.out.println("employee is null");
-            return "redirect:/login";
+            System.out.println("forwarding to login");
+//            return "forward:/login";
+            String errorMessage = "Invalid username or password";
+            return "redirect:/login?error=" + errorMessage;
+
+//            return "redirect:/login";
         }
         String userType = (String) session.getAttribute("userType");
         String user = (String) session.getAttribute("user");
@@ -73,8 +84,19 @@ public class UserController {
 
     @GetMapping("/home")
     public String homeGet(HttpSession session){
-        session.invalidate();
-        return "redirect:/login";
+        String userType = (String)session.getAttribute("userType");
+        String user = (String)session.getAttribute("user");
+        if(userType == null || user == null){
+            return "redirect:/login";
+        }
+        else if(userType.equals("admin")){
+            return "HomeAdmin";
+        }
+        else{
+            return "HomeTrainee";
+        }
+//        session.invalidate();
+//        return "redirect:/login";
 //        String user = (String) session.getAttribute("user");
 //        String pass = (String) session.getAttribute("password");
 //        String userType = (String) session.getAttribute("userType");
@@ -168,7 +190,8 @@ public class UserController {
         Long empId = Long.parseLong(employeeId);
         Long trId = Long.parseLong(trainingId);
         employeeService.addTrainingToEmployee(empId,trId);
-        return "redirect:/getAllTrainings";
+        return "redirect:/getTrainees?trainingId="+trainingId;
+//        return "redirect:/getAllTrainings";
     }
 
 

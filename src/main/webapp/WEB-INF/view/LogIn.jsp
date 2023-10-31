@@ -12,7 +12,11 @@
 </head>
 <body>
 <h1>Login Page</h1>
-
+<c:if test="${param.error != null}">
+    <div class="error">
+        <p>${param.error}</p>
+    </div>
+</c:if>
 <form method="post" action="/home">
     <label for="username">Username:</label>
     <input type="text" id="username" name="username" required th:field="*{username}"><br><br>
