@@ -57,8 +57,10 @@ public class UserController {
             session.setAttribute("userType",emp.getUserType());
             session.setAttribute("user",username);
             session.setAttribute("employeeName",emp.getName());
-//            session.setAttribute("password",emp.getPassword());
             session.setAttribute("employeeId",emp.getId());
+            session.setAttribute("doj",emp.getDateOfJoining());
+            session.setAttribute("dob",emp.getDob());
+            session.setAttribute("phone",emp.getPhone());
         }
         else{
             System.out.println("employee is null");
@@ -73,12 +75,12 @@ public class UserController {
         String user = (String) session.getAttribute("user");
         modelMap.put("empId",emp.getId());
 
-            if(userType.equals("admin")){
-                return "HomeAdmin";
-            }
-            else{
-                return "HomeTrainee";
-            }
+        if(userType.equals("admin")){
+            return "HomeAdmin";
+        }
+        else{
+            return "HomeTrainee";
+        }
 
     }
 
