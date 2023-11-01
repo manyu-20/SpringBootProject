@@ -7,11 +7,36 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <html>
 <head>
     <title>Trainee List</title>
-  <h1>List of Trainees</h1>
-    <table>
+</head>
+
+<style>
+
+    .table-container {
+        text-align: center;
+    }
+
+    th, td {
+        text-align: center;
+    }
+
+    h2 {
+        background-color: aquamarine;
+    }
+</style>
+
+<body>
+
+  <div class="container mt-4">
+
+      <h2 class="display-4 mb-2" style="text-align: center; padding-bottom: 1.5rem;">List of all Trainings</h2>
+      </div>
+
+      <div class="container mt-4">
+          <table class="table table-success table-striped">
 
         <tr>
             <th>Sr No.</th>
@@ -36,15 +61,7 @@
         <% srNO++;
         }
         } %>
-
-
-
-
-
-
     </table>
-</head>
-<body>
-
+</div>
 </body>
 </html>
