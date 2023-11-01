@@ -7,7 +7,7 @@
 	margin: auto;
 	margin-top: 16%;
 	width: 50%;
-	height: 350px;
+	height: 400px;
 	display: flex;
 	border-radius: 10px;
 	box-shadow: 0px 3px 3px -2px rgb(0 0 0/ 20%), 0px 3px 4px 0px
@@ -26,6 +26,7 @@ form {
 	align-items: center;
 	margin: 20px auto;
 }
+
 
 .button {
 	border: none;
