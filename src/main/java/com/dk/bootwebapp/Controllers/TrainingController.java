@@ -130,7 +130,7 @@ public class TrainingController {
             trainingService.updateTopic(value,lid);
         }
         else if(type.equals("updateLocation")){
-            trainingService.updateTopic(value,lid);
+            trainingService.updateLocation(value,lid);
         }
         else if(type.equals("updateStartDate")){
             java.util.Date utilDate = dateFormat.parse(value);

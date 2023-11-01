@@ -13,6 +13,10 @@
 </head>
 <body>
 <h1>Input password number</h1>
+<h2>Name : ${sessionScope.employeeName}</h2>
+<h2>Email : ${sessionScope.user}</h2>
+<h2>DOB  : ${sessionScope.dob}</h2>
+<h2>DOJ  : ${sessionScope.doj}</h2>
 <form method="post" action="/changePassword">
     <label for="password">password:</label>
     <input type="text" id="password" name="password" required th:field="*{password}"><br><br>

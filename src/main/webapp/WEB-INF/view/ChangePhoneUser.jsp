@@ -13,6 +13,11 @@
 <body>
 
 <h1>Input Phone number</h1>
+<h2>Name : ${sessionScope.employeeName}</h2>
+<h2>Email : ${sessionScope.user}</h2>
+
+<h2>DOB  : ${sessionScope.dob}</h2>
+<h2>DOJ  : ${sessionScope.doj}</h2>
 <form method="post" action="/changePhone">
     <label for="phone">phone:</label>
     <input type="text" id="phone" name="phone" required th:field="*{phone}"><br><br>
