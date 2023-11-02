@@ -86,6 +86,33 @@ public class EmoloyeeServiceImpl implements EmployeeService {
         }
     }
 
+    @Transactional
+    @Override
+    public void removeEmployeeFromTraining(Long empId, Long trainingId) {
+        try {
+            Optional<Training> optionalTraining = trainingRepository.findById(trainingId);
+            Optional<Employee> optionalEmployee = employeeRepository.findById(empId);
+            if(optionalEmployee.isPresent() && optionalTraining.isPresent()){
+                Employee employee = optionalEmployee.get();
+                Training training = optionalTraining.get();
+                TrainingParticipant trainingParticipantToBeRemove = null;
+                for(TrainingParticipant tp : training.getParticipants()){
+                    if(tp.getEmployee().getId() == employee.getId()){
+                        trainingParticipantToBeRemove = tp;
+                        break;
+                    }
+                }
+                if(trainingParticipantToBeRemove != null){
+                    training.getParticipants().remove(trainingParticipantToBeRemove);
+                    trainingRepository.save(training);
+                }
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public HashMap<String, List<Training>> getAllTimeTrainings(long id) {
         HashMap<String,List<Training>> hm = new HashMap<>();

@@ -16,6 +16,8 @@ public interface EmployeeService {
 
     public void addTrainingToEmployee(Long empId,Long trainingId);
 
+    public void removeEmployeeFromTraining(Long empId,Long trainingId);
+
     public HashMap<String,List<Training>> getAllTimeTrainings(long id);
 
 }

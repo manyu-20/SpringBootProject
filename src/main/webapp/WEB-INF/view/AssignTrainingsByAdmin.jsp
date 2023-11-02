@@ -36,7 +36,7 @@
             <td><%= training.getLocation() %></td>
             <td><%= training.getStartDate().toString()%></td>
             <td><%= training.getEndDate().toString() %></td>
-            <td> <a href="/AssignTrainingById?employeeId=${employeeId}&trainingId=<%=training.getId()%>"> <button>Assign</button> </a> </td>
+            <td> <a href="/RemoveEmployeeTrainingById?employeeId=${employeeId}&trainingId=<%=training.getId()%>"> <button>Assign</button> </a> </td>
         </tr>
         <% srNO++;
         }

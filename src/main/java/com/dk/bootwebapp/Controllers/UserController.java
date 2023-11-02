@@ -220,6 +220,15 @@ public class UserController {
 //        return "redirect:/getAllTrainings";
     }
 
+    @GetMapping("/RemoveEmployeeTrainingById")
+    public String RemoveEmployeeFromTraining(@RequestParam(name = "employeeId",required = true) String employeeId, @RequestParam(name = "trainingId",required = true) String trainingId){
+        Long empId = Long.parseLong(employeeId);
+        Long trId = Long.parseLong(trainingId);
+        employeeService.removeEmployeeFromTraining(empId,trId);
+        return "redirect:/getTrainees?trainingId="+trainingId;
+//        return "redirect:/getAllTrainings";
+    }
+
 
 
 

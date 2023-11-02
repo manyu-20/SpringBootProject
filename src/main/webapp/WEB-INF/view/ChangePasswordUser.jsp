@@ -51,12 +51,11 @@
       }
           
     </style>
-
 </head>
 <body>
 
 <div class="form_container">
-        <form method="post" action="/changePassword">
+        <form method="post" action="/changePassword" >
             <h1>Update Password</h1>
           
               <input

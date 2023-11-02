@@ -35,6 +35,8 @@
     <td><%= employee.getEmail() %></td>
     <td><%= employee.getName() %></td>
     <td><%= employee.getPhone() %></td>
+    <td> <a href="/RemoveEmployeeTrainingById?employeeId=<%=employee.getId()%>&trainingId=${trainingId}"> <button>Remove</button> </a> </td>
+
   </tr>
   <% srNO++;
   }
@@ -57,6 +59,7 @@
     <th>Email</th>
     <th>Name</th>
     <th>Phone</th>
+    <th>Assign</th>
   </tr>
   <% std = (List<Employee>) request.getAttribute("rest");
     srNO = 1;
