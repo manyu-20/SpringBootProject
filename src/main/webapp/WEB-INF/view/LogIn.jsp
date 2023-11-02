@@ -62,7 +62,7 @@ input {
 		<form method="post" action="/home">
 			<h1>Login to Your Account</h1>
 			<input type="text" id="username" name="username"
-				placeholder="username" required th:field="*{username}"><br>
+				placeholder="Email" required th:field="*{username}"><br>
 			<br> <input type="password" id="password" name="password"
 				placeholder="Password" required th:field="*{password}"><br>
 				
