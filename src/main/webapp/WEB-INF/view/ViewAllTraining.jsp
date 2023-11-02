@@ -42,17 +42,19 @@
             margin-bottom: 20px; /* Adjust as needed */
         }
 
-        h2 {
-            border: 1px solid greenyellow;
-            background-color: aquamarine;
+        header {
+           background-color: #343a40;
+           color: #ffffff;
+           text-align: center;
+           overflow: hidden;
+           max-height: 100px;
         }
     </style>
 <body>
 
-    <div class="container mt-4">
-
-        <h2 class="display-4 mb-2" style="text-align: center; padding-bottom: 1.5rem;">All Trainings</h2>
-        </div>
+    <header>
+        <h2 class="display-4 mb-2">All Trainings</h2>
+        </header>
 
         <div class="container mt-4">
         <h3 class="display-4 mb-2" style="text-align: center; padding-bottom: 1.5rem;">Previous Trainings</h3>
@@ -79,8 +81,8 @@
     <td><%= training.getLocation() %></td>
     <td><%= training.getStartDate().toString()%></td>
     <td><%= training.getEndDate().toString() %></td>
-    <td> <a href="/getTrainees?trainingId=<%=training.getId()%>"> <button>View Details</button> </a> </td>
-    <td> <a href="/updateTraining?id=<%=training.getId()%>"><button>Update Training</button></a> </a> </td>
+    <td> <a href="/getTrainees?trainingId=<%=training.getId()%>"> <button type="button" class="btn btn-light">View Details</button> </a> </td>
+    <td> <a href="/updateTraining?id=<%=training.getId()%>"><button type="button" class="btn btn-light">Update Training</button></a> </a> </td>
 
   </tr>
   <% srNO++;
@@ -112,8 +114,8 @@
       <td><%= training.getLocation() %></td>
       <td><%= training.getStartDate().toString()%></td>
       <td><%= training.getEndDate().toString() %></td>
-      <td> <a href="/getTrainees?trainingId=<%=training.getId()%>"> <button>View Details</button> </a> </td>
-      <td> <a href="/updateTraining?id=<%=training.getId()%>"><button>Update Training</button></a> </a> </td>
+      <td> <a href="/getTrainees?trainingId=<%=training.getId()%>"> <button type="button" class="btn btn-light">View Details</button> </a> </td>
+      <td> <a href="/updateTraining?id=<%=training.getId()%>"><button type="button" class="btn btn-light">Update Training</button></a> </a> </td>
 
     </tr>
     <% srNO++;
@@ -145,8 +147,8 @@
       <td><%= training.getLocation() %></td>
       <td><%= training.getStartDate().toString()%></td>
       <td><%= training.getEndDate().toString() %></td>
-      <td> <a href="/getTrainees?trainingId=<%=training.getId()%>"> <button>View Details</button> </a> </td>
-      <td> <a href="/updateTraining?id=<%=training.getId()%>"><button>Update Training</button></a> </a> </td>
+      <td> <a href="/getTrainees?trainingId=<%=training.getId()%>"> <button type="button" class="btn btn-light">View Details</button> </a> </td>
+      <td> <a href="/updateTraining?id=<%=training.getId()%>"><button type="button" class="btn btn-light">Update Training</button></a> </a> </td>
 
 
     </tr>

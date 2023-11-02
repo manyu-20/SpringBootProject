@@ -7,14 +7,64 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 <html>
 <head>
     <title>Course Participants</title>
 </head>
-<body>
-<h1>Already Enrolled</h1>
 
-<table>
+<style>
+
+  body {
+      margin-bottom: 60px;
+      display: grid;
+  }
+
+  .table-container {
+      text-align: center;
+  }
+
+  table {
+      width: 100%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      margin-bottom: 20px; /* Adjust as needed */
+  }
+
+  th, td {
+      padding: 15px; /* Adjust as needed */
+      text-align: center;
+  }
+
+  h4 {
+      margin-bottom: 20px; /* Adjust as needed */
+  }
+
+  header {
+      background-color: #343a40;
+      color: #ffffff;
+      text-align: center;
+      overflow: hidden;
+      max-height: 100px;
+  }
+
+  h1 {
+      margin: 20px;
+  }
+
+</style>
+
+<body>
+
+  <header>
+    <h1 class="display-5"><b>All Details</b></h1>
+  </header>
+
+    <div class="container mt-4">
+    <h4 class="display-5 mb-2" style="text-align: center; padding-bottom: 1.5rem;"><b>Already Enrolled</b></h4>
+    <table class="table table-success table-striped">
 
   <tr>
     <th>Sr No.</th>
@@ -35,23 +85,15 @@
     <td><%= employee.getEmail() %></td>
     <td><%= employee.getName() %></td>
     <td><%= employee.getPhone() %></td>
-    <td> <a href="/RemoveEmployeeTrainingById?employeeId=<%=employee.getId()%>&trainingId=${trainingId}"> <button>Remove</button> </a> </td>
-
   </tr>
   <% srNO++;
   }
   } %>
 
-
-
-
-
-
 </table>
 
-<h1>Not enrolled</h1>
-
-<table>
+<h4 class="display-5 mb-2" style="text-align: center; padding-bottom: 1.5rem;"><b>Not Enrolled</b></h4>
+    <table class="table table-success table-striped">
 
   <tr>
     <th>Sr No.</th>
@@ -59,7 +101,7 @@
     <th>Email</th>
     <th>Name</th>
     <th>Phone</th>
-    <th>Assign</th>
+    <th> Assign </th>
   </tr>
   <% std = (List<Employee>) request.getAttribute("rest");
     srNO = 1;
@@ -72,16 +114,11 @@
     <td><%= employee.getEmail() %></td>
     <td><%= employee.getName() %></td>
     <td><%= employee.getPhone() %></td>
-    <td> <a href="/AssignTrainingById?employeeId=<%=employee.getId()%>&trainingId=${trainingId}"> <button>Assign</button> </a> </td>
+    <td> <a href="/AssignTrainingById?employeeId=<%=employee.getId()%>&trainingId=${trainingId}"> <button type="button" class="btn btn-light">Assign</button> </a> </td>
   </tr>
   <% srNO++;
   }
   } %>
-
-
-
-
-
 
 </table>
 
