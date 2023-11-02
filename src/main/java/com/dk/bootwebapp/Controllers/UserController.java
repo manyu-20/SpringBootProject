@@ -37,8 +37,18 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String login (){
-        return "LogIn";
+    public String login (HttpSession session){
+        String userName = (String) session.getAttribute("user");
+        String userType = (String) session.getAttribute("userType");
+        if(userName != null && userType != null){
+            if(userType.equals("admin")){
+                return "redirect:/home";
+            }
+            else{
+                return "redirect:/home";
+            }
+        }
+        else return "LogIn";
     }
 
     @PostMapping ("/home")
@@ -89,6 +99,7 @@ public class UserController {
         String userType = (String)session.getAttribute("userType");
         String user = (String)session.getAttribute("user");
         if(userType == null || user == null){
+            session.invalidate();
             return "redirect:/login";
         }
         else if(userType.equals("admin")){
@@ -125,6 +136,7 @@ public class UserController {
     public String changePassword(HttpSession session){
         String user = (String)session.getAttribute("user");
         if(user == null){
+            session.invalidate();
             return "redirect:/login";
         }
         else{
@@ -153,6 +165,7 @@ public class UserController {
     public String changePhone(HttpSession session) {
         String user = (String) session.getAttribute("user");
         if (user == null) {
+            session.invalidate();
             return "redirect:/login";
         } else {
             return "ChangePhoneUser";
@@ -178,12 +191,23 @@ public class UserController {
     @GetMapping("/getAllEmployees")
     public String getAllEmployees(ModelMap modelMap,HttpSession session){
         String user = (String)session.getAttribute("user");
+        String userType = (String) session.getAttribute("userType");
         if(user == null){
+            session.invalidate();
             return "redirect:/login";
+        }
+        else if(!userType.equals("admin")){
+            return "redirect:/badRequest";
         }
         List<Employee> listOfTrainees = employeeService.findAllTrainees();
         modelMap.put("listOfTrainees",listOfTrainees);
         return "showAllEmployees";
+
+    }
+
+    @GetMapping("/badRequest")
+    public String BadRequestError(){
+        return "BadRequestError";
 
     }
 

@@ -97,7 +97,7 @@ margin-left: auto;
 				<img class="card-img-top" src="/images/course.png" alt="Card image cap" />
 				<div class="card-body">
 					<p class="card-text">
-						<a href="/viewTrainings?empId=${empId}"> Show my courses </a>
+						<a href="/viewTrainings?empId=${sessionScope.employeeId}"> Show my courses </a>
 					</p>
 				</div>
 			</div>
