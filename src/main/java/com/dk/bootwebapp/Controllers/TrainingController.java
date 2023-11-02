@@ -31,7 +31,7 @@ public class TrainingController {
             return "redirect:/login";
         }
         else if (!userType.equals("admin")) {
-            return "redirect:/BadRequest";
+            return "redirect:/badRequest";
         } else{
             return "AddNewTrainingByAdmin";
         }
@@ -54,7 +54,7 @@ public class TrainingController {
             return "redirect:/login";
         }
         else if (!userType.equals("admin")) {
-            return "redirect:/BadRequest";
+            return "redirect:/badRequest";
         } else{
             Date startDate = new Date(startYear - 1900, startMonth - 1, startDay);
             Date endDate = new Date(endYear - 1900, endMonth - 1, endDay);
@@ -130,7 +130,7 @@ public class TrainingController {
             trainingService.updateTopic(value,lid);
         }
         else if(type.equals("updateLocation")){
-            trainingService.updateTopic(value,lid);
+            trainingService.updateLocation(value,lid);
         }
         else if(type.equals("updateStartDate")){
             java.util.Date utilDate = dateFormat.parse(value);
