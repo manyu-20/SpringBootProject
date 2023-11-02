@@ -8,7 +8,7 @@
             margin: auto;
             margin-top: 16%;
             width: 50%;
-            height: 300px;
+            height: 500px;
             display: flex;
             border-radius: 10px;
             box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%),0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
@@ -21,7 +21,10 @@
         align-items: center;
         margin: 20px auto;
       }
-
+  /*    body{
+        background-color: #edf5f3;
+      } */ 
+ 
     button{  
 
     border: none;
@@ -58,6 +61,34 @@
         <form method="post" action="/changePhone">
             <h1>Update New No.</h1>
           
+             <input
+               type="text" 
+               id="Name" 
+               value=${sessionScope.employeeName}
+               disabled
+            />
+             <input
+            
+               type="text" 
+               id="Email" 
+               value=${sessionScope.user}
+               disabled
+               
+            />
+             <input
+               type="text" 
+               id="Date of Birth" 
+              value=${sessionScope.dob}
+               disabled
+               
+            />
+             <input
+               type="text" 
+               id="Date of Joining" 
+               value=${sessionScope.doj}
+               disabled
+          
+            />
             <input
                 placeholder="Phone No."
                type="text" 

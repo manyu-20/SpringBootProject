@@ -59,6 +59,14 @@
         <form method="post" action="/changePassword">
             <h1>Update Password</h1>
           
+              <input
+            
+               type="text" 
+               id="Email" 
+               value=${sessionScope.user}
+               disabled
+               
+            />
             <input
                 type="password"
                 placeholder="Password"

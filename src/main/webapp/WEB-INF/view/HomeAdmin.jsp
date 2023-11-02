@@ -55,24 +55,43 @@
 	height: 50px;
 	display: flex;
 	padding: 5px 20px;
+	justify-content: flex-end;
+	align-items: center;
+	box-shadow: -1px 1px 4px rgb(168, 168, 168);
+	color: white;
+}
+.footer {
+	background-color: #5a9c97;
+	margin-top:20px;
+	height: 50px;
+	display: flex;
+	padding: 5px 20px;
 	justify-content: space-between;
 	align-items: center;
 	box-shadow: -1px 1px 4px rgb(168, 168, 168);
 	color: white;
 }
+.log{
+margin-top:20px;
+}
 
 h1 {
 	text-align: center;
 	margin-top: 3%;
-
 }
+.logout{
+color:white;
+font-weight:bold;
+font-size:20px;
+}
+
 </style>
 </head>
 <body>
 	<div>
 		<div class="nvbr">
 			<p class="log">
-				<a href="/logout"> Logout </a>
+				<a class="logout" href="/logout"> Logout </a>
 			</p>
 		</div>
 		<h1>Admin Dashboard</h1>
@@ -132,6 +151,9 @@ h1 {
 				</div>
 			</div>
 		</div>
+		<div class="footer">
+  <p>Footer</p>
+</div>
 	</div>
 </body>
 </html>
