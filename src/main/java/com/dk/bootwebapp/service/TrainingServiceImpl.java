@@ -4,6 +4,7 @@ import com.dk.bootwebapp.model.Employee;
 import com.dk.bootwebapp.model.Training;
 import com.dk.bootwebapp.model.TrainingParticipant;
 import com.dk.bootwebapp.repo.EmployeeRepository;
+import com.dk.bootwebapp.repo.TrainingParticipantRepository;
 import com.dk.bootwebapp.repo.TrainingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,54 @@ public class TrainingServiceImpl implements TrainingService {
 
     @Autowired
     EmployeeRepository employeeRepository;
+
+    @Autowired
+    TrainingParticipantRepository trainingParticipantRepository;
+
+    @Override
+    public List<Training> findCurrTrainingsNotAssignedToEmployee(Long empID) {
+        List<Training> employeeTrainings = new ArrayList<>();
+
+        try {
+            Date currentDate = new Date(System.currentTimeMillis()); // Get the current date
+            List<Training> AllCurrentTraining = trainingRepository.findTrainingStartedBeforeAndEndedAfter(currentDate, currentDate);
+            Optional<Employee> optionalEmployee = employeeRepository.findById(empID);
+            if(optionalEmployee.isPresent()){
+                Employee employee = optionalEmployee.get();
+                List<TrainingParticipant> trainingParticipantList = trainingParticipantRepository.findAll();
+                trainingParticipantList.stream().filter((tempEmployee) -> tempEmployee.getEmployee().getId() == employee.getId()).forEach((item) -> employeeTrainings.add(item.getTraining()));
+            }
+
+            return null;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+            return employeeTrainings;
+
+    }
+
+    @Override
+    public List<Training> findFutureTrainingsNotAssignedToEmployee(Long empID) {
+        List<Training> employeeTrainings = new ArrayList<>();
+
+        try {
+            Date currentDate = new Date(System.currentTimeMillis()); // Get the current date
+            List<Training> AllCurrentTraining = trainingRepository.findTrainingStartedAfter(currentDate);
+            Optional<Employee> optionalEmployee = employeeRepository.findById(empID);
+            if(optionalEmployee.isPresent()){
+                Employee employee = optionalEmployee.get();
+                List<TrainingParticipant> trainingParticipantList = trainingParticipantRepository.findAll();
+                trainingParticipantList.stream().filter((tempEmployee) -> tempEmployee.getEmployee().getId() == employee.getId()).forEach((item) -> employeeTrainings.add(item.getTraining()));
+            }
+
+            return null;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return employeeTrainings;
+    }
 
     @Override
     public List<Training> findPrev() {

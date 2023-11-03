@@ -10,6 +10,9 @@ import java.util.List;
 
 public interface TrainingService {
 
+    public List<Training> findCurrTrainingsNotAssignedToEmployee(Long empID);
+    public List<Training> findFutureTrainingsNotAssignedToEmployee(Long empID);
+
     public List<Training> findPrev();
 
     public List<Training> findCurrent();
