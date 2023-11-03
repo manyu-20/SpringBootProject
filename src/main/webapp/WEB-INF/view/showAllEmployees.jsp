@@ -23,17 +23,16 @@
         text-align: center;
     }
 
-    h2 {
-        background-color: aquamarine;
+    header {
+        background-color: #343a40;
     }
 </style>
 
 <body>
 
-  <div class="container mt-4">
-
+  <header>
       <h2 class="display-4 mb-2" style="text-align: center; padding-bottom: 1.5rem;">List of all Trainings</h2>
-      </div>
+  </header>
 
       <div class="container mt-4">
           <table class="table table-success table-striped">

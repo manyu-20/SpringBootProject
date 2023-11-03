@@ -1,35 +1,98 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: abhimanyusaini
-  Date: 28/10/23
-  Time: 2:14 pm
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Add Trainings</title>
-</head>
+    <head>
+        <title>Add new training</title>
+    </head>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<style>
+
+    body {
+       text-align: center;
+       background: #3bb19b;
+       justify-content: center;
+       overflow: hidden;
+    }
+
+    h4 {
+        margin-top: 10px;
+        color: white;
+        padding: 10px;
+    }
+
+    .form-container{
+        background-color: white;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        margin-bottom: 50px;
+        display: inline-block;
+    }
+
+    .form{
+        margin: 0 auto;
+        max-width: 400px;
+        display: block;
+    }
+
+    label{
+        display: flex;
+        color: black;
+        text-decoration: solid;
+    }
+
+    .one{
+        height: 10px;
+        font-size: large;
+    }
+
+    input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            background-color:white;
+            color: black;
+            border: none;
+            font-size: 20px;
+            max-width: 150px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #095245;
+            color: #92f0df;
+        }
+
+        header {
+        background-color: #343a40;
+        text-align: center;
+        overflow: hidden;
+        margin-bottom: 20px;
+        }
+
+</style>
+
 <body>
-<h1>Add new training</h1>
-<form method="post" action="/addTraining">
-    <label for="startDay">Start Day:</label>
-    <input type="number" id="startDay" name="startDay" required><br><br>
+    <header>
+    <h4 class="display-4">Add New Trainings</h4>
+    </header>
 
-    <label for="startMonth">Start Month:</label>
-    <input type="number" id="startMonth" name="startMonth" required><br><br>
+    <div>
+    <form class="form" method="post" action="/addTraining">
 
-    <label for="startYear">Start Year:</label>
-    <input type="number" id="startYear" name="startYear" required><br><br>
+    <label for="startDate">Start Date:</label>
+    <input type="date" id="startDate" name="startDate"><br><br>
 
-    <label for="endDay">End Day:</label>
-    <input type="number" id="endDay" name="endDay" required><br><br>
-
-    <label for="endMonth">End Month:</label>
-    <input type="number" id="endMonth" name="endMonth" required><br><br>
-
-    <label for="endYear">End Year:</label>
-    <input type="number" id="endYear" name="endYear" required><br><br>
+    <label for="endDate">End Date:</label>
+    <input type="date" id="endDate" name="endDate" required><br><br>
 
     <label for="topic">Topic:</label>
     <input type="text" id="topic" name="topic" required><br><br>
@@ -40,7 +103,11 @@
     <label for="location">Location:</label>
     <input type="text" id="location" name="location" required><br><br>
 
-    <input type="submit" value="Add Training">
+ <div class="one">
+    <input type="submit" value="Add">
+    </div>
 </form>
+</div>
+
 </body>
 </html>
