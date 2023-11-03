@@ -72,6 +72,7 @@
     <th>Email</th>
     <th>Name</th>
     <th>Phone</th>
+    <th> Remove </th>
   </tr>
   <% List<Employee> std = (List<Employee>) request.getAttribute("current");
     int srNO = 1;
@@ -85,6 +86,7 @@
     <td><%= employee.getEmail() %></td>
     <td><%= employee.getName() %></td>
     <td><%= employee.getPhone() %></td>
+    <td> <a href="/RemoveEmployeeTrainingById?employeeId=<%=employee.getId()%>&trainingId=${trainingId}"> <button type="button" class="btn btn-light">Remove</button> </a> </td>
   </tr>
   <% srNO++;
   }

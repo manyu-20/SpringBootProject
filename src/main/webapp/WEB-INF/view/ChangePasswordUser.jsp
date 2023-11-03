@@ -29,6 +29,8 @@
       .container {
         background-color: #f1f1f1;
         padding: 20px;
+        width: 30%;
+        margin-left: 600px;
       }
 
       form {
@@ -41,12 +43,16 @@
         color: #000;
         position: relative;
         padding: 20px;
+        width: 30%;
+        margin-left: 600px;
         margin-top: 10px;
       }
 
       #message p {
-        padding: 10px 35px;
-        font-size: 18px;
+        padding: 10px 15px;
+        font-size: 16px;
+        font-weight: 100;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
       }
 
       /* Add a green text color and a checkmark when the requirements are right */
@@ -89,6 +95,16 @@
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
 
+        h3 {
+          color: white;
+          margin-bottom: 10px;
+          font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        h4 {
+          color: black;
+          font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
 
     </style>
 <body>
@@ -98,25 +114,27 @@
     </header>
 
 <div class="container">
-    <form method="post" action="/changePassword">
+    <form action="/action_page.php">
+      <!-- <label for="usrname">Username</label>
+      <input type="text" id="usrname" name="usrname" required> -->
 
-      <label for="password"><b>New Password</b></label>
-    <input type="password" id="password" name="password" pattern="(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required th:field="*{password}">
+      <label for="psw"><b>New Password</b></label>
+    <input type="password" id="psw" name="psw" pattern="(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
 
       <input type="submit" value="Submit">
     </form>
   </div>
 
   <div id="message">
-    <h3>Password must contain the following:</h3>
-    <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+    <h4>Password must contain the following:</h4>
+    <p id="letter" class=" invalid">A <b>lowercase</b> letter</p>
     <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
     <p id="number" class="invalid">A <b>number</b></p>
     <p id="length" class="invalid">Minimum <b>8 characters</b></p>
   </div>
 
   <script>
-    var myInput = document.getElementById("password");
+    var myInput = document.getElementById("psw");
     var letter = document.getElementById("letter");
     var capital = document.getElementById("capital");
     var number = document.getElementById("number");

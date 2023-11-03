@@ -72,7 +72,7 @@
         }
 
         header {
-        background-color: grey;
+        background-color: #343a40;
         text-align: center;
         overflow: hidden;
         margin-bottom: 20px;
