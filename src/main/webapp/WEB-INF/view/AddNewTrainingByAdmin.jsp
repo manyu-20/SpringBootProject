@@ -11,7 +11,6 @@
        text-align: center;
        background: #3bb19b;
        justify-content: center;
-       overflow: hidden;
     }
 
     h4 {
@@ -74,7 +73,6 @@
         header {
         background-color: #343a40;
         text-align: center;
-        overflow: hidden;
         margin-bottom: 20px;
         }
 
@@ -86,27 +84,27 @@
     </header>
 
     <div>
-    <form class="form" method="post" action="/addTraining">
+        <form class="form" method="post" action="/addTraining">
 
-    <label for="startDate">Start Date:</label>
-    <input type="date" id="startDate" name="startDate"><br><br>
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" name="startDate"><br><br>
 
-    <label for="endDate">End Date:</label>
-    <input type="date" id="endDate" name="endDate" required><br><br>
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate" name="endDate" required><br><br>
 
-    <label for="topic">Topic:</label>
-    <input type="text" id="topic" name="topic" required><br><br>
+            <label for="topic">Topic:</label>
+            <input type="text" id="topic" name="topic" required><br><br>
 
-    <label for="trainerName">Trainer Name:</label>
-    <input type="text" id="trainerName" name="trainerName" required><br><br>
+            <label for="trainerName">Trainer Name:</label>
+            <input type="text" id="trainerName" name="trainerName" required><br><br>
 
-    <label for="location">Location:</label>
-    <input type="text" id="location" name="location" required><br><br>
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required><br><br>
 
- <div class="one">
-    <input type="submit" value="Add">
-    </div>
-</form>
+            <div class="one">
+                <input type="submit" value="Add">
+            </div>
+        </form>
 </div>
 
 </body>

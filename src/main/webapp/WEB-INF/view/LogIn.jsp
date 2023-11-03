@@ -1,4 +1,93 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<title>Login</title>
+	<style>
+		body {
+			background-color: #f8f9fa;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+		.container {
+			text-align: center;
+			border: 1px solid #dcdcdc;
+			border-radius: 10px;
+			padding: 20px;
+			box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+			max-width: 700px;
+			width: 100%;
+			background-color: #e3f2fd;
 
+		}
+		.alert {
+			display: none; /* Initially hide the error banner */
+			margin-top: 20px;
+		}
+		.image-container {
+			text-align: center; /* Center the image horizontally */
+			margin-bottom: 20px;
+		}
+		.login-image {
+			max-width: 100%;
+			max-height: 600px;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6"> <!-- Adjust the column size as needed -->
+			<div class="image-container">
+				<img src="./images/login1.png" alt="Image" class="login-image">
+			</div>
+		</div>
+		<div class="col-md-6"> <!-- Adjust the column size as needed -->
+			<h2 class="mb-4">Training Management Sign In</h2>
+			<c:if test="${param.error != null}">
+				<div class="alert alert-danger">
+					<p>${param.error}</p>
+				</div>
+			</c:if>
+			<form method="post" action="/home">
+				<div class="mb-3">
+					<label for="email" class="form-label">Email</label>
+					<input type="email" class="form-control border-0 border-bottom border-info" id="username" name="username" required>
+				</div>
+				<div class="mb-3">
+					<label for="password" class="form-label">Password</label>
+					<input type="password" class="form-control border-0 border-bottom border-info" id="password" name="password" required>
+				</div>
+				<button type="submit" class="btn btn-info">Login</button>
+			</form>
+		</div>
+	</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+	// Show the error banner if there's an error
+	const errorBanner = document.querySelector(".alert");
+	if (errorBanner && errorBanner.textContent.trim() !== "") {
+		errorBanner.style.display = "block";
+	}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<%--
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <html>
 <head>
@@ -76,3 +165,4 @@ input {
 	</div>
 </body>
 </html>
+--%>

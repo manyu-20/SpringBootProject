@@ -145,7 +145,7 @@ public class UserController {
     }
 
     @PostMapping("/changePassword")
-    public String changePasswordPOST(@RequestParam(name = "password")String password,HttpSession session){
+    public String changePasswordPOST(@RequestParam(name = "newPassword")String password,HttpSession session){
         System.out.println("inside post");
 
         String userName = (String)session.getAttribute("user");
@@ -250,10 +250,10 @@ public class UserController {
         return "ViewTrainingsUser";
     }
 
-    @GetMapping("/error")
-    public String BadRequest(){
-        return "BadRequest";
-    }
+//    @GetMapping("/error")
+//    public String BadRequest(){
+//        return "BadRequest";
+//    }
 
 
 

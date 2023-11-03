@@ -17,13 +17,18 @@
 	text-align: center;
 	box-shadow: 0px 1px 10px lightgrey;
 	border-radius: 10px;
-	padding: 20px 0px;
 	cursor: pointer;
-	transition: all 0.15s ease-in-out;
-	background-color: white;
 	font-size: 13px;
 	font-weight: 700;
-	color: gray;
+	color: rgb(128, 128, 128);
+	padding: 3rem 0px 20px;
+	transition: transform 0.3s ease;
+	background-color: #e3f2fd;
+
+}
+
+.card:hover {
+	transform: translateY(-10px); /* Lift the div up by 10 pixels on hover */
 }
 
 .card-text {
@@ -50,30 +55,12 @@
 	margin-left: auto;
 }
 
-.nvbr {
-	background-color: #5a9c97;
-	height: 50px;
-	display: flex;
-	padding: 5px 20px;
-	justify-content: flex-end;
-	align-items: center;
-	box-shadow: -1px 1px 4px rgb(168, 168, 168);
-	color: white;
+
+footer{
+	margin-top: 10rem;
+	justify-content: center;
 }
-.footer {
-	background-color: #5a9c97;
-	margin-top:20px;
-	height: 50px;
-	display: flex;
-	padding: 5px 20px;
-	justify-content: space-between;
-	align-items: center;
-	box-shadow: -1px 1px 4px rgb(168, 168, 168);
-	color: white;
-}
-.log{
-margin-top:20px;
-}
+
 
 h1 {
 	text-align: center;
@@ -89,24 +76,24 @@ font-size:20px;
 </head>
 <body>
 	<div>
-		<div class="nvbr">
-			<p class="log">
-				<a class="logout" href="/logout"> Logout </a>
-			</p>
-		</div>
-		<h1>Admin Dashboard</h1>
-		<%
-			String currentDirectory = System.getProperty("user.dir");
+		<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+			<a class="navbar-brand" href="/home">Trainee Management</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="ml-auto">
+					<a class="nav-link" href="/logout">Logout</a>
+			</div>
+		</nav>
 
-			// Print the current directory to the console
-			System.out.println("Current Directory: " + currentDirectory);
-		%>
+		<h1>Admin Dashboard</h1>
+
 		<div class="adminCrd">
 			<div class="card">
 				<img class="card-img-top" src="/images/img.png" alt="Card image cap" />
 				<div class="card-body">
-					<p class="card-text">
-						<a href="/getAllEmployees"> Get All Trainee </a>
+					<p class="card-text lead">
+						<a href="/getAllEmployees" class="text-dark"> Get All Trainee </a>
 					</p>
 				</div>
 			</div>
@@ -115,8 +102,8 @@ font-size:20px;
 				<img class="card-img-top" src="/images/Password.png"
 					alt="Card image cap" />
 				<div class="card-body">
-					<p class="card-text">
-						<a href="/changePasswordUser"> Change Password </a>
+					<p class="card-text lead">
+						<a href="/changePasswordUser" class="text-dark"> Change Password </a>
 					</p>
 				</div>
 			</div>
@@ -125,8 +112,8 @@ font-size:20px;
 				<img class="card-img-top" src="/images/phone.jpeg"
 					alt="Card image cap" />
 				<div class="card-body">
-					<p class="card-text">
-						<a href="/changePhone"> Change Phone No. </a>
+					<p class="card-text lead">
+						<a href="/changePhone" class="text-dark"> Change Phone No. </a>
 					</p>
 				</div>
 			</div>
@@ -135,8 +122,8 @@ font-size:20px;
 				<img class="card-img-top" src="/images/addTrainings.png"
 					alt="Card image cap" />
 				<div class="card-body">
-					<p class="card-text">
-						<a href="/addTraining"> Add Trainings </a>
+					<p class="card-text lead">
+						<a href="/addTraining" class="text-dark"> Add Trainings </a>
 					</p>
 				</div>
 			</div>
@@ -145,15 +132,17 @@ font-size:20px;
 				<img class="card-img-top" src="/images/getAllTraining.jpeg"
 					alt="Card image cap" />
 				<div class="card-body">
-					<p class="card-text">
-						<a href="/getAllTrainings"> Get All Trainings </a>
+					<p class="card-text lead">
+						<a href="/getAllTrainings" class="text-dark"> Get All Trainings </a>
 					</p>
 				</div>
 			</div>
 		</div>
-		<div class="footer">
-  <p>Footer</p>
-</div>
+		<footer class="text-center text-lg-start" style="background-color: #e3f2fd;">
+			<div class="text-center p-3">
+				Trainee Management System
+			</div>
+		</footer>
 	</div>
 </body>
 </html>

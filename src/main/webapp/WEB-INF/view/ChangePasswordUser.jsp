@@ -1,3 +1,78 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous" />    <title>Password Update Form</title>
+    <style>
+        .container {
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="/home">Edit Password</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</nav>
+<div class="container">
+    <h1 class="display-4">Password Update</h1>
+    <form method="post" action="/changePassword">
+        <div class="mb-3">
+            <label for="newPassword" class="form-label">New Password</label>
+            <input type="password" class="form-control" id="newPassword" name="newPassword" required>
+            <small id="passwordHelp" class="form-text text-muted">Your password must be at least 8 characters long.</small>
+        </div>
+        <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Confirm New Password</label>
+            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Update Password</button>
+    </form>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+        const newPassword = document.getElementById("newPassword");
+        const confirmPassword = document.getElementById("confirmPassword");
+
+        form.addEventListener("submit", function (event) {
+            // Reset previous validation messages
+            newPassword.setCustomValidity("");
+            confirmPassword.setCustomValidity("");
+            console.log(newPassword.value.length)
+            if (newPassword.value.length < 8) {
+                newPassword.setCustomValidity("Password must be at least 8 characters long.");
+            }
+            console.log("new pass", newPassword.value);
+            console.log("current pass", confirmPassword.value)
+            if (newPassword.value !== confirmPassword.value) {
+                confirmPassword.setCustomValidity("Passwords do not match.");
+            }
+
+            if (form.checkValidity() === false) {
+                event.preventDefault(); // Prevent form submission if there are validation errors
+                event.stopPropagation();
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+<%--
 <html>
     <style>
 
@@ -140,19 +215,15 @@
     var number = document.getElementById("number");
     var length = document.getElementById("length");
 
-    // When the user clicks on the password field, show the message box
     myInput.onfocus = function() {
       document.getElementById("message").style.display = "block";
     }
 
-    // When the user clicks outside of the password field, hide the message box
     myInput.onblur = function() {
       document.getElementById("message").style.display = "none";
     }
 
-    // When the user starts to type something inside the password field
     myInput.onkeyup = function() {
-      // Validate lowercase letters
       var lowerCaseLetters = /[a-z]/g;
       if(myInput.value.match(lowerCaseLetters)) {
     letter.classList.remove("invalid");
@@ -194,4 +265,4 @@
 </script>
 
 </body>
-  </html>
+  </html>--%>

@@ -17,18 +17,27 @@
 	text-align: center;
 	box-shadow: 0px 1px 10px lightgrey;
 	border-radius: 10px;
-	padding: 20px 0px;
 	cursor: pointer;
-	transition: all 0.15s ease-in-out;
-	background-color: white;
+	background-color: #e3f2fd;
 	font-size: 13px;
 	font-weight: 700;
-	color: gray;
+	padding: 3rem 0px 20px;
+	transition: transform 0.3s ease;
+
+}
+.card:hover {
+	transform: translateY(-10px); /* Lift the div up by 10 pixels on hover */
 }
 
 .card-text{
     margin-top:25px;
     font-size:25px;
+}
+
+.logout{
+	color:white;
+	font-weight:bold;
+	font-size:20px;
 }
 
 @media only screen and (min-width: 900px) {
@@ -44,15 +53,8 @@
 	margin-top:5%;
 }
 
-.nvbr {
-	background-color: #5a9c97;
-	height: 50px;
-	display: flex;
-	padding: 5px 20px;
-	justify-content: space-between;
-	align-items: center;
-	box-shadow: -1px 1px 4px rgb(168, 168, 168);
-	color: white;
+.log{
+	margin-top:20px;
 }
 
 h1 {
@@ -65,21 +67,29 @@ height: 150px;
 margin-right:auto;
 margin-left: auto;
 }
+footer{
+	margin-top: 10rem;
+	justify-content: center;
+}
 </style>
 </head>
 <body>
 	<div>
-		<div class="nvbr">
-			<p class="log">
-				<a href="/logout"> Logout </a>
-			</p>
-		</div>
-		<h1>Hello ${sessionScope.employeeName}</h1>
+		<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+			<a class="navbar-brand" href="/home">Trainee Management</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="ml-auto">
+				<a class="nav-link" href="/logout">Logout</a>
+			</div>
+		</nav>
+		<h1>Welcome ${sessionScope.employeeName}</h1>
 		<div class="adminCrd">
 			<div class="card">
 				<img class="card-img-top" src="/images/Password.png" alt="Card image cap" />
 				<div class="card-body">
-					<p class="card-text">
+					<p class="card-text lead">
 						<a href="/changePasswordUser"> Change Password </a>
 					</p>
 				</div>
@@ -87,7 +97,7 @@ margin-left: auto;
 			<div class="card">
 				<img class="card-img-top" src="/images/phone.jpeg" alt="Card image cap" />
 				<div class="card-body">
-					<p class="card-text">
+					<p class="card-text lead">
 						<a href="/changePhone"> Change Phone No. </a>
 					</p>
 				</div>
@@ -96,13 +106,18 @@ margin-left: auto;
 			<div class="card">
 				<img class="card-img-top" src="/images/course.png" alt="Card image cap" />
 				<div class="card-body">
-					<p class="card-text">
+					<p class="card-text lead">
 						<a href="/viewTrainings?empId=${sessionScope.employeeId}"> Show my courses </a>
 					</p>
 				</div>
 			</div>
 		</div>
 	</div>
+	<footer class="text-center text-lg-start" style="background-color: #e3f2fd;">
+		<div class="text-center p-3">
+			Trainee Management System
+		</div>
+	</footer>
 </body>
 </html>
 

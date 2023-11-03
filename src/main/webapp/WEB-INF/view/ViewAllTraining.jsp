@@ -83,8 +83,8 @@
     <td><%= training.getLocation() %></td>
     <td><%= training.getStartDate().toString()%></td>
     <td><%= training.getEndDate().toString() %></td>
-    <td> <a href="/getTrainees?trainingId=<%=training.getId()%>"> <button type="button" class="btn btn-light">View Details</button> </a> </td>
-    <td> <a href="/updateTraining?id=<%=training.getId()%>"><button type="button" class="btn btn-light">Update Training</button></a> </a> </td>
+    <td> <a href="/getTrainees?trainingId=<%=training.getId()%>"> <button type="button" class="btn btn-light">View </button> </a> </td>
+    <td> <a href="/updateTraining?id=<%=training.getId()%>"><button type="button" class="btn btn-light">Edit</button></a> </a> </td>
 
   </tr>
   <% srNO++;
@@ -116,8 +116,8 @@
       <td><%= training.getLocation() %></td>
       <td><%= training.getStartDate().toString()%></td>
       <td><%= training.getEndDate().toString() %></td>
-      <td> <a href="/getTrainees?trainingId=<%=training.getId()%>"> <button type="button" class="btn btn-light">View Details</button> </a> </td>
-      <td> <a href="/updateTraining?id=<%=training.getId()%>"><button type="button" class="btn btn-light">Update Training</button></a> </a> </td>
+      <td> <a href="/getTrainees?trainingId=<%=training.getId()%>"> <button type="button" class="btn btn-light">View</button> </a> </td>
+      <td> <a href="/updateTraining?id=<%=training.getId()%>"><button type="button" class="btn btn-light">Edit</button></a> </a> </td>
 
     </tr>
     <% srNO++;
@@ -149,8 +149,8 @@
       <td><%= training.getLocation() %></td>
       <td><%= training.getStartDate().toString()%></td>
       <td><%= training.getEndDate().toString() %></td>
-      <td> <a href="/getTrainees?trainingId=<%=training.getId()%>"> <button type="button" class="btn btn-light">View Details</button> </a> </td>
-      <td> <a href="/updateTraining?id=<%=training.getId()%>"><button type="button" class="btn btn-light">Update Training</button></a> </a> </td>
+      <td> <a href="/getTrainees?trainingId=<%=training.getId()%>"> <button type="button" class="btn btn-light">View</button> </a> </td>
+      <td> <a href="/updateTraining?id=<%=training.getId()%>"><button type="button" class="btn btn-light">Edit</button></a> </a> </td>
 
 
     </tr>

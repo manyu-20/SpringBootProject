@@ -39,16 +39,13 @@ public class TrainingController {
 
     @PostMapping("/addTraining")
     public String AddTrainingPost(HttpSession session,
-                                  @RequestParam(name = "startDay") int startDay,
-                                  @RequestParam(name = "startMonth") int startMonth,
-                                  @RequestParam(name = "startYear") int startYear,
-                                  @RequestParam(name = "endDay") int endDay,
-                                  @RequestParam(name = "endMonth") int endMonth,
-                                  @RequestParam(name = "endYear") int endYear,
+                                  @RequestParam(name = "startDate") String startDate,
+                                  @RequestParam(name = "endDate") String endDate,
                                   @RequestParam(name = "topic") String topic,
                                   @RequestParam(name = "trainerName") String trainerName,
                                   @RequestParam(name = "location") String location)
     {
+        System.out.println("afaeaefeffe");
         String userType = (String)session.getAttribute("userType");
         if(userType == null){
             return "redirect:/login";
@@ -56,10 +53,13 @@ public class TrainingController {
         else if (!userType.equals("admin")) {
             return "redirect:/badRequest";
         } else{
-            Date startDate = new Date(startYear - 1900, startMonth - 1, startDay);
-            Date endDate = new Date(endYear - 1900, endMonth - 1, endDay);
+            System.out.println(startDate);
+            System.out.println(endDate);
 
-            trainingService.addNewTraining(topic,startDate,endDate,location,trainerName);
+
+            Date startDateSql = java.sql.Date.valueOf(startDate);
+            Date endDateSql = java.sql.Date.valueOf(endDate);
+            trainingService.addNewTraining(topic,startDateSql,endDateSql,location,trainerName);
             return "SuccessPage";
         }
     }

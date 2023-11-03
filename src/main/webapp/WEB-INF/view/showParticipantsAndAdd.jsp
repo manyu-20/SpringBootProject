@@ -18,7 +18,6 @@
 <style>
 
   body {
-      margin-bottom: 60px;
       display: grid;
   }
 
@@ -54,12 +53,16 @@
       margin: 20px;
   }
 
+  footer{
+    margin-top: 10rem;
+  }
+
 </style>
 
 <body>
 
   <header>
-    <h1 class="display-5"><b>All Details</b></h1>
+    <h1 class="display-5"><b>Trainee Participants</b></h1>
   </header>
 
     <div class="container mt-4">
@@ -123,6 +126,11 @@
   } %>
 
 </table>
-
+    </div>
+  <footer class="text-center text-lg-start" style="background-color: #e3f2fd;">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      Trainee Management System
+    </div>
+  </footer>
 </body>
 </html>
