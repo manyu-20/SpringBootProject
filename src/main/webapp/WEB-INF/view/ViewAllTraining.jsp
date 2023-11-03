@@ -15,15 +15,13 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
         body {
-            margin-top: 10px;
+            margin-top : 0px;
+            margin-bottom: 60px;
             display: grid;
-
         }
 
         .table-container {
-
             text-align: center;
-            padding: 20px; /* Adjust as needed */
         }
 
         table {
@@ -38,26 +36,30 @@
             text-align: center;
         }
 
-        h3 {
+        h4 {
             margin-bottom: 20px; /* Adjust as needed */
         }
 
         header {
-           background-color: #343a40;
+           background-color: gray;
            color: #ffffff;
            text-align: center;
            overflow: hidden;
-           max-height: 100px;
+           max-height: 150px;
+        }
+
+        h2 {
+        margin-bottom: 120px;
         }
     </style>
 <body>
 
     <header>
-        <h2 class="display-4 mb-2">All Trainings</h2>
+        <h2 class="display-4 mb-2" style="text-align: center; padding-bottom: 1.5rem;">All Trainings</h2>
         </header>
 
         <div class="container mt-4">
-        <h3 class="display-4 mb-2" style="text-align: center; padding-bottom: 1.5rem;">Previous Trainings</h3>
+        <h4 class="display-5 mb-2" style="text-align: center; padding-bottom: 1.5rem;">Previous Trainings</h4>
         <table class="table table-success table-striped">
 
       <tr>
@@ -91,7 +93,7 @@
 
 </table>
 
-  <h3 class="display-4 mb-2" style="text-align: center; padding-bottom: 1.5rem;">Current Trainings</h3>
+  <h4 class="display-4 mb-2" style="text-align: center; padding-bottom: 1.5rem;">Current Trainings</h4>
       <table class="table table-success table-striped">
 
     <tr>
@@ -124,7 +126,7 @@
 
   </table>
 
-   <h3 class="display-4 mb-2" style="text-align: center; padding-bottom: 1.5rem;">Future Trainings</h3>
+   <h4 class="display-4 mb-2" style="text-align: center; padding-bottom: 1.5rem;">Future Trainings</h4>
    <table class="table table-success table-striped">
 
     <tr>
