@@ -32,34 +32,53 @@
             <label for="confirmPassword" class="form-label">Confirm New Password</label>
             <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
         </div>
+        <div class="alert alert-danger" id="passwordError" role="alert" style="display: none;">
+            This is a danger alert—check it out!
+        </div>
         <button type="submit" class="btn btn-primary">Update Password</button>
     </form>
 </div>
 
 <script>
+    function isStrongPassword(password) {
+        // Define a regex pattern for a strong password
+        var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/;
+
+        // Test the password against the regex pattern
+        return regex.test(password);
+    }
+
     document.addEventListener("DOMContentLoaded", function () {
         const form = document.querySelector("form");
         const newPassword = document.getElementById("newPassword");
         const confirmPassword = document.getElementById("confirmPassword");
-
+        const item = document.getElementById("passwordError");
         form.addEventListener("submit", function (event) {
             // Reset previous validation messages
-            newPassword.setCustomValidity("");
-            confirmPassword.setCustomValidity("");
+
             console.log(newPassword.value.length)
             if (newPassword.value.length < 8) {
-                newPassword.setCustomValidity("Password must be at least 8 characters long.");
-            }
-            console.log("new pass", newPassword.value);
-            console.log("current pass", confirmPassword.value)
-            if (newPassword.value !== confirmPassword.value) {
-                confirmPassword.setCustomValidity("Passwords do not match.");
+                item.style.display = "block"
+                item.textContent = "Password length should be more than 8"
+                event.preventDefault();
+                return;
+
             }
 
-            if (form.checkValidity() === false) {
-                event.preventDefault(); // Prevent form submission if there are validation errors
-                event.stopPropagation();
+            if(!isStrongPassword(newPassword.value)){
+                item.style.display = "block"
+                item.textContent = "Password not strong enough"
+                event.preventDefault();
+                return;
             }
+
+            if (newPassword.value !== confirmPassword.value) {
+                item.style.display = "block"
+                item.textContent = "Passwords does not match"
+                event.preventDefault();
+                return;
+            }
+
         });
     });
 </script>

@@ -91,7 +91,7 @@
     <td><%= training.getLocation() %></td>
     <td><%= training.getStartDate().toString()%></td>
     <td><%= training.getEndDate().toString() %></td>
-    <td> <a href="/getTrainees?trainingId=<%=training.getId()%>"> <button type="button" class="btn btn-light">View </button> </a> </td>
+    <td> <a href="/getTrainees?trainingId=<%=training.getId()%>&type=previous"> <button type="button" class="btn btn-light">View </button> </a> </td>
     <td> <a href="/updateTraining?id=<%=training.getId()%>"><button type="button" class="btn btn-light">Edit</button></a> </a> </td>
 
   </tr>

@@ -89,6 +89,17 @@ public class Training {
 
     }
 
+    @Override
+    public String toString() {
+        return "Training{" +
+                "id=" + id +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", topic='" + topic + '\'' +
+                ", trainerName='" + trainerName + '\'' +
+                ", location='" + location + '\'' +
+                '}';
+    }
 
     // Getters and setters
 }

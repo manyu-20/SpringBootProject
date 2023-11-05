@@ -92,7 +92,7 @@ public class TrainingController {
     }
 
     @GetMapping("/getTrainees")
-    public String ShowTraineedForSelection(ModelMap modelMap,@RequestParam(name = "trainingId",required = true) String trainingId){
+    public String ShowTraineedForSelection(ModelMap modelMap,@RequestParam(name = "trainingId",required = true) String trainingId, @RequestParam(name = "type",required = false) String type){
         long tid = Long.parseLong(trainingId);
         HashMap<String,List<Employee>> hm = trainingService.findEmployeesAssociatedWithAndWithoutTraining(tid);
         List<Employee> currentPursuing = new ArrayList<>();
@@ -106,7 +106,16 @@ public class TrainingController {
         modelMap.put("current",currentPursuing);
         modelMap.put("rest",rest);
         modelMap.put("trainingId",tid);
+        if(type != null){
+            System.out.println("type = " + type);
+            modelMap.put("type",type);
+        }
+        else {
+            System.out.println("type is null");
+        }
+
         return "showParticipantsAndAdd";
+
     }
 
     @GetMapping("/updateTraining")
@@ -133,16 +142,97 @@ public class TrainingController {
             trainingService.updateLocation(value,lid);
         }
         else if(type.equals("updateStartDate")){
-            java.util.Date utilDate = dateFormat.parse(value);
-            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-            trainingService.updateStartDate(sqlDate,lid);
+            Date startDateSql = java.sql.Date.valueOf(value);
+            trainingService.updateStartDate(startDateSql,lid);
         }
         else if(type.equals("updateEndDate")){
-            java.util.Date utilDate = dateFormat.parse(value);
-            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-            trainingService.updateEndDate(sqlDate,lid);
+            Date EndDateSql = java.sql.Date.valueOf(value);
+            trainingService.updateEndDate(EndDateSql,lid);
         }
         return "SuccessPage";
+    }
+
+    @GetMapping("/exploreStudent")
+    public String exploreStudent(HttpSession session,ModelMap modelMap,@RequestParam(value = "sid", required = true) String sid,@RequestParam(value = "sName", required = true) String sName){
+        String user = (String)session.getAttribute("user");
+        String userType = (String) session.getAttribute("userType");
+        System.out.println("hit!");
+        System.out.println("user = " + user);
+        System.out.println("usertype = " + userType);
+        if(user == null  || userType == null){
+            session.invalidate();;
+            return "redirect:/login";
+        }
+        else if(userType.equals("admin")){
+            String currentAssigned = "currentAssigned";
+            String currentUnassigned = "currentUnassigned";
+            String FutureAssigned = "FutureAssigned";
+            String FutureUnassigned = "FutureUnassigned";
+            Long studentId = Long.valueOf(String.valueOf(sid));
+            HashMap<String,List<Training>> hm_cuurent = trainingService.findCurrTrainingsAssignedAndNotAssignedToEmployee(studentId);
+            List<Training> currentAss = new ArrayList<>();
+            List<Training> currentUnass = new ArrayList<>();
+            List<Training> FutureAss = new ArrayList<>();
+            List<Training> FutureUnass = new ArrayList<>();
+            HashMap<String,List<Training>> hm_future = trainingService.findFutureTrainingsAssignedAndNotAssignedToEmployee(studentId);
+
+            if(hm_cuurent.containsKey(currentAssigned)){
+                System.out.println("a");
+                currentAss = hm_cuurent.get(currentAssigned);
+            }
+            if(hm_cuurent.containsKey(currentUnassigned)){
+                System.out.println("b");
+
+                currentUnass = hm_cuurent.get(currentUnassigned);
+            }
+            if(hm_future.containsKey(FutureAssigned)){
+                System.out.println("c");
+
+                FutureAss = hm_future.get(FutureAssigned);
+            }
+            if(hm_future.containsKey(FutureUnassigned)){
+                System.out.println("d");
+
+                FutureUnass = hm_future.get(FutureUnassigned);
+            }
+            System.out.println("current assi = " );
+
+            printer(currentAss);
+            System.out.println("current unass = " );
+            printer(currentUnass);
+
+
+            System.out.println("fut ass = " + FutureAss);
+
+            printer(FutureAss);
+            System.out.println("fut unass = " + FutureUnass );
+
+            printer(FutureUnass);
+
+
+
+            modelMap.put(currentAssigned,currentAss);
+            modelMap.put(currentUnassigned,currentUnass);
+
+            modelMap.put(FutureAssigned,FutureAss);
+            modelMap.put(FutureUnassigned,FutureUnass);
+
+            modelMap.put("eid",sid);
+            modelMap.put("name",sName);
+            return "AssignTrainingsByAdmin";
+
+        }
+        else{
+            return "redirect:/badRequest";
+        }
+    }
+
+    private void printer(List<Training> list){
+        for (Training t: list
+             ) {
+            System.out.println(t.getTopic());
+        }
+        System.out.println("******");
     }
 
 

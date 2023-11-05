@@ -29,9 +29,10 @@ public class TrainingServiceImpl implements TrainingService {
     TrainingParticipantRepository trainingParticipantRepository;
 
     @Override
-    public List<Training> findCurrTrainingsNotAssignedToEmployee(Long empID) {
-        List<Training> employeeTrainings = new ArrayList<>();
-
+    public HashMap<String,List<Training>> findCurrTrainingsAssignedAndNotAssignedToEmployee(Long empID) {
+        HashMap<String,List<Training>> hm = new HashMap<>();
+        List<Training> employeeAssignedTrainings = new ArrayList<>();
+        List<Training> employeeUnassignedTrainings = new ArrayList<>();
         try {
             Date currentDate = new Date(System.currentTimeMillis()); // Get the current date
             List<Training> AllCurrentTraining = trainingRepository.findTrainingStartedBeforeAndEndedAfter(currentDate, currentDate);
@@ -39,7 +40,17 @@ public class TrainingServiceImpl implements TrainingService {
             if(optionalEmployee.isPresent()){
                 Employee employee = optionalEmployee.get();
                 List<TrainingParticipant> trainingParticipantList = trainingParticipantRepository.findAll();
-                trainingParticipantList.stream().filter((tempEmployee) -> tempEmployee.getEmployee().getId() == employee.getId()).forEach((item) -> employeeTrainings.add(item.getTraining()));
+                trainingParticipantList.stream().filter((tempEmployee) -> tempEmployee.getEmployee().getId() == employee.getId() && AllCurrentTraining.contains(tempEmployee.getTraining())).forEach((item) -> employeeAssignedTrainings.add(item.getTraining()));
+
+                for (Training temp: AllCurrentTraining
+                     ) {
+                    if(!employeeAssignedTrainings.contains(temp)){
+                        employeeUnassignedTrainings.add(temp);
+                    }
+                }
+                hm.put("currentAssigned",employeeAssignedTrainings);
+                hm.put("currentUnassigned",employeeUnassignedTrainings);
+                return hm;
             }
 
             return null;
@@ -47,22 +58,36 @@ public class TrainingServiceImpl implements TrainingService {
         catch (Exception e){
             e.printStackTrace();
         }
-            return employeeTrainings;
+            return hm;
 
     }
 
-    @Override
-    public List<Training> findFutureTrainingsNotAssignedToEmployee(Long empID) {
-        List<Training> employeeTrainings = new ArrayList<>();
 
+    @Override
+    public HashMap<String,List<Training>> findFutureTrainingsAssignedAndNotAssignedToEmployee(Long empID) {
+        HashMap<String,List<Training>> hm = new HashMap<>();
+        List<Training> employeeAssignedTrainings = new ArrayList<>();
+        List<Training> employeeUnassignedTrainings = new ArrayList<>();
         try {
             Date currentDate = new Date(System.currentTimeMillis()); // Get the current date
-            List<Training> AllCurrentTraining = trainingRepository.findTrainingStartedAfter(currentDate);
+            List<Training> AllfutureTrainings = trainingRepository.findTrainingStartedAfter(currentDate);
+            System.out.println("all future : "+ AllfutureTrainings);
             Optional<Employee> optionalEmployee = employeeRepository.findById(empID);
             if(optionalEmployee.isPresent()){
                 Employee employee = optionalEmployee.get();
                 List<TrainingParticipant> trainingParticipantList = trainingParticipantRepository.findAll();
-                trainingParticipantList.stream().filter((tempEmployee) -> tempEmployee.getEmployee().getId() == employee.getId()).forEach((item) -> employeeTrainings.add(item.getTraining()));
+                trainingParticipantList.stream().filter((tempEmployee) -> tempEmployee.getEmployee().getId() == employee.getId() && AllfutureTrainings.contains(tempEmployee.getTraining())).forEach((item) -> employeeAssignedTrainings.add(item.getTraining()));
+                for (Training temp: AllfutureTrainings
+                ) {
+                    if(!employeeAssignedTrainings.contains(temp)){
+                        employeeUnassignedTrainings.add(temp);
+                    }
+                }
+                System.out.println("sfasgas -> " + employeeAssignedTrainings);
+                System.out.println("asfsagsrgs -> " + employeeUnassignedTrainings);
+                hm.put("FutureAssigned",employeeAssignedTrainings);
+                hm.put("FutureUnassigned",employeeUnassignedTrainings);
+                return hm;
             }
 
             return null;
@@ -70,7 +95,7 @@ public class TrainingServiceImpl implements TrainingService {
         catch (Exception e){
             e.printStackTrace();
         }
-        return employeeTrainings;
+        return hm;
     }
 
     @Override

@@ -18,4 +18,6 @@ public interface TrainingRepository extends JpaRepository<Training,Long> {
 
     @Query("SELECT t FROM Training t WHERE t.endDate < :currentDate")
     List<Training> findTrainingEndedBefore(@Param("currentDate") Date currentDate);
+
+
 }

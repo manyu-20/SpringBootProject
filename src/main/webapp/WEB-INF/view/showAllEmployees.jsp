@@ -65,7 +65,7 @@
             <td><%= employee.getEmail() %></td>
             <td><%= employee.getName() %></td>
             <td><%= employee.getPhone() %></td>
-            <td> <a href="/RemoveEmployeeTrainingById?employeeId=<%=employee.getId()%>&trainingId=${trainingId}"> <button type="button" class="btn btn-light">Explore</button> </a> </td>
+            <td> <a href="/exploreStudent?sid=<%=employee.getId()%>&sName=<%=employee.getName()%>"> <button type="button" class="btn btn-light">Explore</button> </a> </td>
 
         </tr>
         <% srNO++;

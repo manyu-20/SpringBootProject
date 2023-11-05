@@ -250,6 +250,8 @@ public class UserController {
         return "ViewTrainingsUser";
     }
 
+
+
 //    @GetMapping("/error")
 //    public String BadRequest(){
 //        return "BadRequest";
